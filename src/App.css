@@ -1,0 +1,204 @@
+:root {
+  --my-text-color: black;
+  --my-bg-color: bisque;
+  --my-gray-color: rgb(236, 233, 233);
+
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 12px;
+  font-weight: 100;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.flex {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-columns {
+  display: flex;
+  flex-direction: column;
+}
+
+.my-bg-gray {
+  background-color: var(--my-gray-color);
+}
+
+.error {
+  color: red;
+}
+
+/* React App CSS*/
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Header */
+header {
+  background-color: var(--my-gray-color);
+  color: black;
+}
+
+#title {
+  justify-content: space-between;
+}
+
+#title h1 {
+  font-size: 1rem;
+  margin-bottom: 0;
+  padding: 1%;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  background-color: var(--my-gray-color);
+}
+
+#title-image {
+  width: 5%;
+  /*background: url(../src/images/circle.png) no-repeat center;*/
+  background-size: 60%;
+  border: 0;
+}
+
+#title-image:hover {
+  opacity: 80%;
+  cursor: pointer;
+}
+
+
+
+/*Form div*/
+#form input {
+  width: 100%;
+  border: 0;
+}
+
+#form input::placeholder {
+  font-style: italic;
+  padding-left: 1%;
+}
+
+/* Main */
+main {
+  width: 40%;
+  margin: 5% auto;
+  border: 1px solid var(--my-gray-color);
+  background-color: white;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+ul {
+  list-style-type: none;
+  margin-left: 0;
+  justify-content: space-between;
+  padding: 1%;
+}
+
+.row {
+  border-bottom: 1px solid var(--my-gray-color);
+  padding: 1.2% 0;
+}
+
+/* Display-tasks DIV */
+
+.blurred {
+  font-style: italic;
+  text-decoration: dashed;
+  background-color: rgb(245, 232, 227);
+}
+
+.checkbox {
+  width: 3%;
+  margin-bottom: 0;
+  margin-left: 0;
+  text-align: left;
+}
+
+li .checkbox:checked {
+  background-color: red;
+}
+
+.description {
+  margin-left: 1%;
+  width: 92%;
+  align-self: center;
+  background-color: transparent;
+  text-align: left;
+}
+
+.action {
+  width: 5%;
+  /*background: url(images/dots.webp) no-repeat center;*/
+  background-size: 50%;
+  border: 0;
+}
+
+.showRemove {
+  width: 5%;
+  /*background: url(images/delete.png) no-repeat center;*/
+  background-size: 50%;
+  border: 0;
+}
+
+.showRemove:hover,
+.action:hover {
+  opacity: 80%;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Crear completed Tasks */
+#clear-completed a {
+  width: 100%;
+  text-decoration: none;
+  text-align: center;
+  background-color: var(--my-gray-color);
+}
+
+/* Footer */
+footer {
+  width: 100%;
+  height: 5%;
+  margin-top: 75vh;
+}
