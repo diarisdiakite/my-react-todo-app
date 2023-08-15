@@ -32,7 +32,7 @@
   color: red;
 }
 
-/* React App CSS*/
+/* React App CSS */
 .App {
   text-align: center;
 }
@@ -67,6 +67,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -76,6 +77,8 @@
 header {
   background-color: var(--my-gray-color);
   color: black;
+  margin: 5% auto 0 auto;
+  width: 60%
 }
 
 #title {
@@ -93,7 +96,8 @@ header {
 
 #title-image {
   width: 5%;
-  /*background: url(../src/images/circle.png) no-repeat center;*/
+
+  /* background: url(../src/images/circle.png) no-repeat center; */
   background-size: 60%;
   border: 0;
 }
@@ -103,11 +107,9 @@ header {
   cursor: pointer;
 }
 
-
-
-/*Form div*/
+/* Form div */
 #form input {
-  width: 100%;
+  width: 96%;
   border: 0;
 }
 
@@ -166,14 +168,16 @@ li .checkbox:checked {
 
 .action {
   width: 5%;
-  /*background: url(images/dots.webp) no-repeat center;*/
+
+  /* background: url(images/dots.webp) no-repeat center; */
   background-size: 50%;
   border: 0;
 }
 
 .showRemove {
   width: 5%;
-  /*background: url(images/delete.png) no-repeat center;*/
+
+  /* background: url(images/delete.png) no-repeat center; */
   background-size: 50%;
   border: 0;
 }
@@ -189,11 +193,13 @@ li .checkbox:checked {
 }
 
 /* Crear completed Tasks */
-#clear-completed a {
+#clear-completed button {
   width: 100%;
   text-decoration: none;
   text-align: center;
   background-color: var(--my-gray-color);
+  border: none;
+  color: red;
 }
 
 /* Footer */

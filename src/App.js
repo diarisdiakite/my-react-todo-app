@@ -1,85 +1,79 @@
-import React from 'react'
-import { useState } from 'react'
-import { FaTrashAlt } from 'react-icons/fa'
+import './App.css';
+import { useState, useEffect } from 'react';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Content from './components/Content';
 
+function App() {
+  // useState
+  const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem('tasks')) || []);
+  // Adding the search form
+  const [search, setSearch] = useState('');
 
+  useEffect(() => {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }, [tasks]);
 
-const Content = () => {
-  const [tasks, setTasks] = useState([
-    {
-      id: 1,
-      description: 'Call Mamm',
-      completed: true
-    },
-    {
-      id: 2,
-      description: 'Call Chadid',
-      completed: false
-    },
-    {
-      id: 3,
-      description: 'Submit projects',
-      completed: false
-    }
-  ]);
+  const [newTask, setNewTask] = useState(''); // Displace to UseState area
+  const addTask = (task) => {
+    const id = tasks.length ? tasks[tasks.length - 1].id + 1 : 1;
+    const myNewTask = { id, description: task, completed: false };
+    const listTasks = [...tasks, myNewTask];
+    setTasks(listTasks);
+  };
+
+  const HandleAdd = (e) => {
+    e.preventDefault();
+    if (!newTask) return;
+    addTask(newTask);
+    setNewTask('');
+  };
 
   const HandleCheck = (id) => {
-    const listTasks = tasks.map((task) => task.id === id ? {...task, completed: !task.completed} : task);
+    const listTasks = tasks.map((task) => (
+      task.id === id ? { ...task, completed: !task.completed } : task
+    ));
     setTasks(listTasks);
-    localStorage.setItem('tasks', JSON.stringify(listTasks));
-  }
+  };
 
   const HandleDelete = (id) => {
     const listTasks = tasks.filter((task) => task.id !== id);
     setTasks(listTasks);
-    localStorage.setItem('tasks', JSON.stringify(listTasks));
-  }
-  
+  };
+
+  // Adding ClearAllCompleted
+  const [clearCompleted, setClearCompleted] = useState('');
+  const HandleClearCompleted = () => {
+    const listTasks = tasks.filter((task) => !task.completed);
+    setTasks(listTasks);
+  };
+
   return (
-    <main>
-      <div id='title'>
-        <h1>Today's To Do</h1>
-        <button type="button" id="title-image"></button>
-      </div>
+    <div className="App">
+      <Header
+        title="your daily list"
+        length={tasks.length}
+      />
 
-      <div id="form" className="row">          
-        <input id="descriptionInput" type="text" placeholder="Add your list..." required />
-      </div>
-
-      
-      <ul id="display-list" className="row">
-        {tasks.map(task => (
-          <li className='task-card flex' key={task.id}>
-            <input
-              className='checkbox' 
-              type="checkbox"
-              checked={ task.completed }
-              onChange={() => HandleCheck(task.id)} 
-            />
-            <label 
-              htmlFor='' 
-              className='description'
-              style = {task.completed ? {textDecoration: 'line-through', fontStyle:'italic'} : null}
-            >
-              { task.description }
-            </label>
-            <FaTrashAlt 
-              role='button'
-              tabIndex='0'
-              onClick={() => HandleDelete(task.id)}
-            />
-          </li>
-        ))}
-      </ul>
-
-
-
-      <div id="clear-completed" className="row my-bg-gray">
-        <a id="clear-completed-link" href=""><p id="clear-completed-text"></p></a>
-      </div>
-      
-    </main>
-  )
+      <Content
+        newTask={newTask}
+        setNewTask={setNewTask}
+        HandleAdd={HandleAdd}
+        // search handler
+        search={search}
+        setSearch={setSearch}
+        // Check and Delete handlers
+        tasks={tasks}
+        HandleCheck={HandleCheck}
+        HandleDelete={HandleDelete}
+        // Clear completed tasks handlers
+        clearCompleted={clearCompleted}
+        setClearCompleted={setClearCompleted}
+        HandleClearCompleted={HandleClearCompleted}
+      />
+      <Footer />
+    </div>
+  );
 }
 
-export default Content
+export default App;
