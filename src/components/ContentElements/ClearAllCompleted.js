@@ -1,18 +1,22 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 
-const ClearAllCompleted = ({ clearCompleted, setClearCompleted, HandleClearCompleted }) => {
-  return (
-    <div id="clear-completed" className="row my-bg-gray">
-      <a 
-        id='clear-completed-link' 
-        className='clear-completed-text'
-        href='' 
-        onClick={HandleClearCompleted}
-      >
-        Clear all Completed
-      </a>
-    </div>
-  )
-}
+const ClearAllCompleted = ({ HandleClearCompleted }) => (
+  <div id="clear-completed" className="row my-bg-gray">
+    <button
+      type="button"
+      id="clear-completed-link"
+      className="clear-completed-text"
+      href=""
+      onClick={HandleClearCompleted}
+    >
+      Clear all Completed
+    </button>
+  </div>
+);
 
-export default ClearAllCompleted
+ClearAllCompleted.propTypes = {
+  HandleClearCompleted: PropTypes.func.isRequired,
+};
+
+export default ClearAllCompleted;

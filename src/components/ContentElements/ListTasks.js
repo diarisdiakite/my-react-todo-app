@@ -1,19 +1,24 @@
-import React from 'react'
-import TaskLi from './TaskLi'
+import React from 'react';
+import PropTypes from 'prop-types';
+import TaskLi from './TaskLi';
 
-const ListTasks = ({ tasks, HandleCheck, HandleDelete}) => {
-  return (
-    <ul id="display-list" className="row">
-      {tasks.map((task) => (
-        <TaskLi
-          key={task.id} 
-          task={task}
-          HandleCheck={HandleCheck}
-          HandleDelete={HandleDelete}
-        />
-      ))}
-    </ul>
-  )
-}
+const ListTasks = ({ tasks, HandleCheck, HandleDelete }) => (
+  <ul id="display-list" className="row">
+    {tasks.map((task) => (
+      <TaskLi
+        key={task.id}
+        task={task}
+        HandleCheck={HandleCheck}
+        HandleDelete={HandleDelete}
+      />
+    ))}
+  </ul>
+);
 
-export default ListTasks
+ListTasks.propTypes = {
+  HandleDelete: PropTypes.func.isRequired,
+  HandleCheck: PropTypes.func.isRequired,
+  tasks: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
+
+export default ListTasks;

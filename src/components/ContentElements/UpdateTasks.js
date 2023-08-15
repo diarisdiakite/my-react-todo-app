@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
-const UpdateTasks = () => {
-  return (
-    <div>UpdateTasks</div>
-  )
-}
+const UpdateTasks = () => (
+  <div>UpdateTasks</div>
+);
 
-export default UpdateTasks
+export default UpdateTasks;
